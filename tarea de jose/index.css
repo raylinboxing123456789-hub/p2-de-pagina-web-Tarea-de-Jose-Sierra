@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+    background-size: 400% 400%;
+    animation: viento 15s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes viento {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    width: 350px;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #00f2fe;
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+}
+
+.avatar-container {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.avatar-img { width: 100%; height: 100%; object-fit: cover; }
+
+.welcome-text {
+    color: #fff;
+    margin-bottom: 30px;
+    text-decoration: underline;
+    opacity: 0;
+    animation: aparecer 2s ease forwards;
+}
+
+@keyframes aparecer { to { opacity: 1; } }
+
+.input-group { margin-bottom: 20px; position: relative; }
+
+input:not([type="checkbox"]) {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    color: white;
+    outline: none;
+}
+
+/* --- LÓGICA DEL OJO SIN JAVASCRIPT --- */
+.toggle-checkbox {
+    display: none; /* Ocultamos el checkbox real */
+}
+
+.pass-visible {
+    display: none; /* Ocultamos el campo de texto por defecto */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Cuando el checkbox está marcado, mostramos el texto y ocultamos los puntos */
+.toggle-checkbox:checked ~ .pass-visible {
+    display: block;
+}
+
+.toggle-checkbox:checked ~ .pass-real {
+    display: none;
+}
+
+.eye-label {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    z-index: 10;
+}
+
+/* Cambiar el icono del ojo */
+.eye-closed { display: none; }
+.toggle-checkbox:checked ~ .eye-label .eye-open { display: none; }
+.toggle-checkbox:checked ~ .eye-label .eye-closed { display: inline-block; }
+
+/* ------------------------------------ */
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #00f2fe;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover { box-shadow: 0 0 15px #00f2fe; }
